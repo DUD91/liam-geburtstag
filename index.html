@@ -21,6 +21,20 @@
   }
   .wrap{max-width:680px;margin:0 auto;padding:0 20px}
 
+  /* --- Sprachumschalter --- */
+  .langbar{
+    position:absolute; top:14px; right:14px; z-index:5;
+    display:flex; gap:4px; background:rgba(255,255,255,.75);
+    padding:4px; border-radius:999px; box-shadow:0 2px 8px rgba(13,44,84,.15);
+    backdrop-filter:blur(4px);
+  }
+  .langbar button{
+    border:0; background:transparent; color:var(--blue-900); cursor:pointer;
+    font:inherit; font-weight:700; font-size:.78rem; padding:5px 10px; border-radius:999px;
+    line-height:1;
+  }
+  .langbar button[aria-pressed="true"]{background:var(--blue-700); color:#fff}
+
   /* --- Hero --- */
   header{
     position:relative; overflow:hidden; text-align:center;
@@ -92,12 +106,12 @@
   }
   input:focus,select:focus,textarea:focus{outline:3px solid var(--blue-500);outline-offset:1px}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  button{
+  button.send{
     background:var(--blue-700);color:#fff;border:0;border-radius:999px;padding:15px 24px;
     font:inherit;font-weight:800;font-size:1.05rem;cursor:pointer;box-shadow:0 6px 16px rgba(29,111,208,.35);
   }
-  button:hover{background:var(--blue-900)}
-  button:disabled{opacity:.6;cursor:progress}
+  button.send:hover{background:var(--blue-900)}
+  button.send:disabled{opacity:.6;cursor:progress}
   .hint{font-size:.82rem;color:var(--blue-700)}
   .thanks{
     display:none;text-align:center;background:#fff;border-radius:18px;padding:28px 20px;
@@ -122,10 +136,17 @@
 </head>
 <body>
 
+<nav class="langbar" aria-label="Sprache / Language">
+  <button type="button" data-lang="de" aria-pressed="true">DE</button>
+  <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+  <button type="button" data-lang="it" aria-pressed="false">IT</button>
+  <button type="button" data-lang="en" aria-pressed="false">EN</button>
+</nav>
+
 <header>
-  <span class="eyebrow">Du bist eingeladen</span>
-  <h1>Liam wird<span class="one">1</span></h1>
-  <p class="tagline">Samstag, 29. August 2026 · 12:00 Uhr · Schlieren</p>
+  <span class="eyebrow" data-i18n="eyebrow">Du bist eingeladen</span>
+  <h1 data-i18n-html="hero">Liam wird<span class="one">1</span></h1>
+  <p class="tagline" data-i18n="tagline">Samstag, 29. August 2026 · 12:00 Uhr · Schlieren</p>
 
   <!-- Tier-Parade: Elefant, Giraffe, Löwe, Bär -->
   <svg class="hero-art" viewBox="0 0 620 170" role="img" aria-label="Elefant, Giraffe, Löwe und Bär mit Luftballons">
@@ -193,22 +214,22 @@
   <section>
     <h2>
       <svg viewBox="0 0 24 24" fill="none" stroke="#1d6fd0" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
-      Wann &amp; wo
+      <span data-i18n="when_where">Wann &amp; wo</span>
     </h2>
     <div class="cards">
       <div class="card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fd0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
         <div>
-          <div class="label">Datum &amp; Zeit</div>
-          <div class="value">Samstag, 29. August 2026<br>ab 12:00 Uhr</div>
+          <div class="label" data-i18n="date_label">Datum &amp; Zeit</div>
+          <div class="value" data-i18n-html="date_value">Samstag, 29. August 2026<br>ab 12:00 Uhr</div>
         </div>
       </div>
       <div class="card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fd0" stroke-width="2" stroke-linecap="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
         <div>
-          <div class="label">Ort</div>
+          <div class="label" data-i18n="place_label">Ort</div>
           <div class="value">Parkallee 46<br>8952 Schlieren</div>
-          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Parkallee+46,+8952+Schlieren" target="_blank" rel="noopener">Route öffnen</a>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Parkallee+46,+8952+Schlieren" target="_blank" rel="noopener" data-i18n="map_link">Route öffnen</a>
         </div>
       </div>
     </div>
@@ -217,12 +238,12 @@
   <section>
     <h2>
       <svg viewBox="0 0 24 24" fill="none" stroke="#1d6fd0" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M3 17l5-4 4 3 3-2 6 5"/></svg>
-      Das ist Liam
+      <span data-i18n="this_is_liam">Das ist Liam</span>
     </h2>
     <div class="photos">
-      <figure><div class="photo-placeholder">Foto folgt</div></figure>
-      <figure><div class="photo-placeholder">Foto folgt</div></figure>
-      <figure><div class="photo-placeholder">Foto folgt</div></figure>
+      <figure><div class="photo-placeholder" data-i18n="photo_ph">Foto folgt</div></figure>
+      <figure><div class="photo-placeholder" data-i18n="photo_ph">Foto folgt</div></figure>
+      <figure><div class="photo-placeholder" data-i18n="photo_ph">Foto folgt</div></figure>
     </div>
   </section>
 
@@ -230,54 +251,54 @@
     <div class="rsvp">
       <h2>
         <svg viewBox="0 0 24 24" fill="none" stroke="#1d6fd0" stroke-width="2" stroke-linecap="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
-        Anmeldung
+        <span data-i18n="rsvp_title">Anmeldung</span>
       </h2>
-      <p class="lead">Damit wir wissen, wie viel Kuchen es braucht: sag uns kurz Bescheid.</p>
+      <p class="lead" data-i18n="rsvp_lead">Damit wir wissen, wie viel Kuchen es braucht: sag uns kurz Bescheid.</p>
 
       <form id="rsvp">
         <div>
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" required autocomplete="name" placeholder="Dein Name">
+          <label for="name" data-i18n="f_name">Name</label>
+          <input id="name" name="name" type="text" required autocomplete="name" data-i18n-ph="f_name_ph" placeholder="Dein Name">
         </div>
 
         <div>
-          <label for="antwort">Kommst du?</label>
+          <label for="antwort" data-i18n="f_coming">Kommst du?</label>
           <select id="antwort" name="antwort" required>
-            <option value="Ja, ich komme">Ja, wir kommen gerne</option>
-            <option value="Leider nicht">Leider nicht</option>
+            <option value="Ja" data-i18n="f_yes">Ja, wir kommen gerne</option>
+            <option value="Nein" data-i18n="f_no">Leider nicht</option>
           </select>
         </div>
 
         <div class="row">
           <div>
-            <label for="erwachsene">Erwachsene</label>
+            <label for="erwachsene" data-i18n="f_adults">Erwachsene</label>
             <input id="erwachsene" name="erwachsene" type="number" min="0" max="20" value="1" inputmode="numeric">
           </div>
           <div>
-            <label for="kinder">Kinder</label>
+            <label for="kinder" data-i18n="f_children">Kinder</label>
             <input id="kinder" name="kinder" type="number" min="0" max="20" value="0" inputmode="numeric">
           </div>
         </div>
 
         <div>
-          <label for="allergien">Allergien oder Essenswünsche</label>
-          <input id="allergien" name="allergien" type="text" placeholder="z.B. laktosefrei, vegetarisch">
+          <label for="allergien" data-i18n="f_allergies">Allergien oder Essenswünsche</label>
+          <input id="allergien" name="allergien" type="text" data-i18n-ph="f_allergies_ph" placeholder="z.B. laktosefrei, vegetarisch">
         </div>
 
         <div>
-          <label for="nachricht">Nachricht an Liam (optional)</label>
-          <textarea id="nachricht" name="nachricht" rows="3" placeholder="Wir freuen uns!"></textarea>
+          <label for="nachricht" data-i18n="f_message">Nachricht an Liam (optional)</label>
+          <textarea id="nachricht" name="nachricht" rows="3" data-i18n-ph="f_message_ph" placeholder="Wir freuen uns!"></textarea>
         </div>
 
-        <button type="submit" id="submit">Anmeldung abschicken</button>
-        <p class="hint">Anmeldeschluss: 22. August 2026</p>
-        <p class="error" id="error">Hat leider nicht geklappt. Versuch es nochmals oder melde dich direkt bei uns.</p>
+        <button type="submit" id="submit" class="send" data-i18n="f_submit">Anmeldung abschicken</button>
+        <p class="hint" data-i18n="f_deadline">Anmeldeschluss: 22. August 2026</p>
+        <p class="error" id="error" data-i18n="f_error">Hat leider nicht geklappt. Versuch es nochmals oder melde dich direkt bei uns.</p>
       </form>
 
       <div class="thanks" id="thanks">
         <svg viewBox="0 0 24 24" fill="none" stroke="#1d6fd0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l3 3 5-6"/></svg>
-        <h3>Danke!</h3>
-        <p>Deine Anmeldung ist bei uns angekommen. Bis am 29. August!</p>
+        <h3 data-i18n="thanks_title">Danke!</h3>
+        <p data-i18n="thanks_body">Deine Anmeldung ist bei uns angekommen. Bis am 29. August!</p>
       </div>
     </div>
   </section>
@@ -290,13 +311,141 @@
     <ellipse cx="310" cy="30" rx="11" ry="8" fill="#a8d0f0"/><circle cx="299" cy="23" r="6" fill="#a8d0f0"/>
     <path d="M50 34 h100 M200 34 h90" stroke="#e3f0ff" stroke-width="3" stroke-linecap="round"/>
   </svg>
-  <p>Wir freuen uns auf dich · Familie Dutli</p>
+  <p data-i18n="footer">Wir freuen uns auf dich · Familie Dutli</p>
 </footer>
 
 <script>
-  // Endpoint wird nach dem Apps-Script-Deploy eingesetzt.
   const ENDPOINT = "https://script.google.com/macros/s/AKfycbxRF0kNSlNi0ixCljBIDMLJNDkuH4DFhmIcPNL8HSAVwJ4Uj2Zkv0pWkA9OtCBZUgtDoA/exec";
 
+  // ---- Übersetzungen ----
+  const I18N = {
+    de: {
+      title:"Liam wird 1! — 29. August 2026", htmllang:"de-CH",
+      eyebrow:"Du bist eingeladen",
+      hero:'Liam wird<span class="one">1</span>',
+      tagline:"Samstag, 29. August 2026 · 12:00 Uhr · Schlieren",
+      when_where:"Wann & wo",
+      date_label:"Datum & Zeit", date_value:"Samstag, 29. August 2026<br>ab 12:00 Uhr",
+      place_label:"Ort", map_link:"Route öffnen",
+      this_is_liam:"Das ist Liam", photo_ph:"Foto folgt",
+      rsvp_title:"Anmeldung",
+      rsvp_lead:"Damit wir wissen, wie viel Kuchen es braucht: sag uns kurz Bescheid.",
+      f_name:"Name", f_name_ph:"Dein Name",
+      f_coming:"Kommst du?", f_yes:"Ja, wir kommen gerne", f_no:"Leider nicht",
+      f_adults:"Erwachsene", f_children:"Kinder",
+      f_allergies:"Allergien oder Essenswünsche", f_allergies_ph:"z.B. laktosefrei, vegetarisch",
+      f_message:"Nachricht an Liam (optional)", f_message_ph:"Wir freuen uns!",
+      f_submit:"Anmeldung abschicken", f_sending:"Wird gesendet …",
+      f_deadline:"Anmeldeschluss: 22. August 2026",
+      f_error:"Hat leider nicht geklappt. Versuch es nochmals oder melde dich direkt bei uns.",
+      thanks_title:"Danke!", thanks_body:"Deine Anmeldung ist bei uns angekommen. Bis am 29. August!",
+      footer:"Wir freuen uns auf dich · Familie Dutli"
+    },
+    fr: {
+      title:"Liam a 1 an ! — 29 août 2026", htmllang:"fr-CH",
+      eyebrow:"Tu es invité·e",
+      hero:'Liam a<span class="one">1</span>an',
+      tagline:"Samedi 29 août 2026 · 12h00 · Schlieren",
+      when_where:"Quand & où",
+      date_label:"Date & heure", date_value:"Samedi 29 août 2026<br>dès 12h00",
+      place_label:"Lieu", map_link:"Ouvrir l’itinéraire",
+      this_is_liam:"Voici Liam", photo_ph:"Photo à venir",
+      rsvp_title:"Inscription",
+      rsvp_lead:"Pour savoir combien de gâteau préparer : dis-le-nous vite.",
+      f_name:"Nom", f_name_ph:"Ton nom",
+      f_coming:"Tu viens ?", f_yes:"Oui, avec plaisir", f_no:"Malheureusement non",
+      f_adults:"Adultes", f_children:"Enfants",
+      f_allergies:"Allergies ou préférences alimentaires", f_allergies_ph:"p.ex. sans lactose, végétarien",
+      f_message:"Message pour Liam (facultatif)", f_message_ph:"On a hâte !",
+      f_submit:"Envoyer l’inscription", f_sending:"Envoi …",
+      f_deadline:"Réponse souhaitée avant le 22 août 2026",
+      f_error:"Ça n’a pas fonctionné. Réessaie ou contacte-nous directement.",
+      thanks_title:"Merci !", thanks_body:"Ton inscription nous est bien parvenue. À bientôt, le 29 août !",
+      footer:"On se réjouit de te voir · Famille Dutli"
+    },
+    it: {
+      title:"Liam compie 1 anno! — 29 agosto 2026", htmllang:"it-CH",
+      eyebrow:"Sei invitato/a",
+      hero:'Liam compie<span class="one">1</span>anno',
+      tagline:"Sabato 29 agosto 2026 · ore 12:00 · Schlieren",
+      when_where:"Quando e dove",
+      date_label:"Data e ora", date_value:"Sabato 29 agosto 2026<br>dalle 12:00",
+      place_label:"Luogo", map_link:"Apri il percorso",
+      this_is_liam:"Ecco Liam", photo_ph:"Foto in arrivo",
+      rsvp_title:"Iscrizione",
+      rsvp_lead:"Così sappiamo quanta torta serve: facci sapere.",
+      f_name:"Nome", f_name_ph:"Il tuo nome",
+      f_coming:"Vieni?", f_yes:"Sì, veniamo volentieri", f_no:"Purtroppo no",
+      f_adults:"Adulti", f_children:"Bambini",
+      f_allergies:"Allergie o preferenze alimentari", f_allergies_ph:"es. senza lattosio, vegetariano",
+      f_message:"Messaggio per Liam (facoltativo)", f_message_ph:"Non vediamo l’ora!",
+      f_submit:"Invia l’iscrizione", f_sending:"Invio …",
+      f_deadline:"Rispondere entro il 22 agosto 2026",
+      f_error:"Qualcosa non ha funzionato. Riprova o contattaci direttamente.",
+      thanks_title:"Grazie!", thanks_body:"La tua iscrizione è arrivata. Ci vediamo il 29 agosto!",
+      footer:"Non vediamo l’ora di vederti · Famiglia Dutli"
+    },
+    en: {
+      title:"Liam turns 1! — 29 August 2026", htmllang:"en",
+      eyebrow:"You’re invited",
+      hero:'Liam turns<span class="one">1</span>',
+      tagline:"Saturday, 29 August 2026 · 12:00 · Schlieren",
+      when_where:"When & where",
+      date_label:"Date & time", date_value:"Saturday, 29 August 2026<br>from 12:00",
+      place_label:"Location", map_link:"Get directions",
+      this_is_liam:"This is Liam", photo_ph:"Photo coming",
+      rsvp_title:"RSVP",
+      rsvp_lead:"So we know how much cake to bake — let us know.",
+      f_name:"Name", f_name_ph:"Your name",
+      f_coming:"Are you coming?", f_yes:"Yes, we’ll be there", f_no:"Sorry, can’t make it",
+      f_adults:"Adults", f_children:"Children",
+      f_allergies:"Allergies or food preferences", f_allergies_ph:"e.g. lactose-free, vegetarian",
+      f_message:"Message for Liam (optional)", f_message_ph:"We can’t wait!",
+      f_submit:"Send RSVP", f_sending:"Sending …",
+      f_deadline:"Please reply by 22 August 2026",
+      f_error:"That didn’t work. Please try again or contact us directly.",
+      thanks_title:"Thank you!", thanks_body:"We’ve received your RSVP. See you on 29 August!",
+      footer:"We can’t wait to see you · The Dutli family"
+    }
+  };
+
+  let lang = "de";
+
+  function applyLang(l){
+    const d = I18N[l] || I18N.de;
+    lang = l;
+    document.documentElement.lang = d.htmllang;
+    document.title = d.title;
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      const k = el.getAttribute("data-i18n"); if(d[k]!==undefined) el.textContent = d[k];
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach(el=>{
+      const k = el.getAttribute("data-i18n-html"); if(d[k]!==undefined) el.innerHTML = d[k];
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach(el=>{
+      const k = el.getAttribute("data-i18n-ph"); if(d[k]!==undefined) el.placeholder = d[k];
+    });
+    document.querySelectorAll(".langbar button").forEach(b=>{
+      b.setAttribute("aria-pressed", b.dataset.lang===l ? "true":"false");
+    });
+    try{ localStorage.setItem("liam_lang", l); }catch(e){}
+  }
+
+  document.querySelectorAll(".langbar button").forEach(b=>{
+    b.addEventListener("click", ()=>applyLang(b.dataset.lang));
+  });
+
+  // Startsprache: gespeicherte Wahl → Browsersprache → Deutsch
+  (function(){
+    let start = "de";
+    try{ const s = localStorage.getItem("liam_lang"); if(s && I18N[s]) start = s; else {
+      const b = (navigator.language||"de").slice(0,2).toLowerCase();
+      if(I18N[b]) start = b;
+    }}catch(e){}
+    applyLang(start);
+  })();
+
+  // ---- Formular ----
   const form = document.getElementById('rsvp');
   const thanks = document.getElementById('thanks');
   const errorBox = document.getElementById('error');
@@ -306,12 +455,13 @@
     e.preventDefault();
     errorBox.classList.remove('show');
     btn.disabled = true;
-    btn.textContent = 'Wird gesendet …';
+    btn.textContent = I18N[lang].f_sending;
 
     const data = Object.fromEntries(new FormData(form).entries());
+    data.sprache = lang;   // in welcher Sprache angemeldet (fürs Sheet, optional)
 
     try {
-      if (!ENDPOINT) throw new Error('kein Endpoint');
+      if (!ENDPOINT) throw new Error('no endpoint');
       await fetch(ENDPOINT, {
         method: 'POST',
         mode: 'no-cors',
@@ -324,7 +474,7 @@
     } catch (err) {
       errorBox.classList.add('show');
       btn.disabled = false;
-      btn.textContent = 'Anmeldung abschicken';
+      btn.textContent = I18N[lang].f_submit;
     }
   });
 </script>
