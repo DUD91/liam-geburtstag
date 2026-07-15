@@ -76,14 +76,15 @@
   .card .label{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-700);font-weight:700}
   .card .value{font-size:1.12rem;font-weight:600;color:var(--blue-900)}
   .card a{color:var(--blue-700)}
-  .map-link{
+  a.map-link{
     display:inline-block;margin-top:12px;background:var(--blue-700);color:#fff;text-decoration:none;
     padding:11px 20px;border-radius:999px;font-weight:700;font-size:.95rem;
   }
+  a.map-link:hover{background:var(--blue-900);color:#fff}
 
   /* --- Photos --- */
   .liam-photo{
-    margin:0;border-radius:20px;overflow:hidden;border:6px solid #fff;
+    margin:0 auto;border-radius:20px;overflow:hidden;border:6px solid #fff;
     box-shadow:0 14px 34px rgba(13,44,84,.16);background:var(--blue-100);
     max-width:540px;transform:rotate(-1.6deg);
   }
@@ -237,10 +238,6 @@
   </section>
 
   <section>
-    <h2>
-      <svg viewBox="0 0 24 24" fill="none" stroke="#1d6fd0" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M3 17l5-4 4 3 3-2 6 5"/></svg>
-      <span data-i18n="this_is_liam">Das ist Liam</span>
-    </h2>
     <figure class="liam-photo">
       <img src="img/liam-1.jpg" alt="Liam" width="1100" height="825" loading="lazy">
     </figure>
