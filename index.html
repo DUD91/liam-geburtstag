@@ -82,18 +82,19 @@
   }
 
   /* --- Photos --- */
-  .photos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-  .photos figure{
-    margin:0;border-radius:18px;overflow:hidden;border:4px solid #fff;
-    box-shadow:0 8px 20px rgba(13,44,84,.12);background:var(--blue-100);
-    aspect-ratio:4/3;
+  .liam-photo{
+    margin:0;border-radius:20px;overflow:hidden;border:6px solid #fff;
+    box-shadow:0 14px 34px rgba(13,44,84,.16);background:var(--blue-100);
+    max-width:540px;transform:rotate(-1.6deg);
   }
-  .photos figure:first-child{grid-column:1 / -1;aspect-ratio:16/10}
-  .photos img{width:100%;height:100%;object-fit:cover;display:block}
-  .photo-placeholder{
-    width:100%;height:100%;display:grid;place-items:center;color:var(--blue-700);
-    font-weight:600;font-size:.85rem;text-align:center;padding:10px;
+  .liam-photo img{width:100%;height:auto;display:block}
+  .closing-photo{
+    margin:6px auto 0;max-width:600px;border-radius:22px;overflow:hidden;
+    border:6px solid #fff;box-shadow:0 16px 38px rgba(13,44,84,.18);
+    transform:rotate(1.4deg);background:var(--blue-100);
   }
+  .closing-photo img{width:100%;height:auto;display:block}
+  .closing-caption{text-align:center;color:var(--blue-700);font-weight:600;margin-top:16px}
 
   /* --- RSVP --- */
   .rsvp{background:var(--blue-100);border-radius:26px;padding:26px 22px;margin-bottom:40px}
@@ -240,11 +241,9 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="#1d6fd0" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M3 17l5-4 4 3 3-2 6 5"/></svg>
       <span data-i18n="this_is_liam">Das ist Liam</span>
     </h2>
-    <div class="photos">
-      <figure><div class="photo-placeholder" data-i18n="photo_ph">Foto folgt</div></figure>
-      <figure><div class="photo-placeholder" data-i18n="photo_ph">Foto folgt</div></figure>
-      <figure><div class="photo-placeholder" data-i18n="photo_ph">Foto folgt</div></figure>
-    </div>
+    <figure class="liam-photo">
+      <img src="img/liam-1.jpg" alt="Liam" width="1100" height="825" loading="lazy">
+    </figure>
   </section>
 
   <section>
@@ -302,6 +301,13 @@
       </div>
     </div>
   </section>
+
+  <section>
+    <figure class="closing-photo">
+      <img src="img/liam-2.jpg" alt="Liam" width="1100" height="825" loading="lazy">
+    </figure>
+    <p class="closing-caption" data-i18n="closing_caption">Bis bald — dein Liam!</p>
+  </section>
 </main>
 
 <footer>
@@ -339,7 +345,7 @@
       f_deadline:"Anmeldeschluss: 22. August 2026",
       f_error:"Hat leider nicht geklappt. Versuch es nochmals oder melde dich direkt bei uns.",
       thanks_title:"Danke!", thanks_body:"Deine Anmeldung ist bei uns angekommen. Bis am 29. August!",
-      footer:"Wir freuen uns auf dich · Familie Dutli"
+      footer:"Wir freuen uns auf dich · Familie Dutli", closing_caption:"Bis bald — dein Liam!"
     },
     fr: {
       title:"Liam a 1 an ! — 29 août 2026", htmllang:"fr-CH",
@@ -361,7 +367,7 @@
       f_deadline:"Réponse souhaitée avant le 22 août 2026",
       f_error:"Ça n’a pas fonctionné. Réessaie ou contacte-nous directement.",
       thanks_title:"Merci !", thanks_body:"Ton inscription nous est bien parvenue. À bientôt, le 29 août !",
-      footer:"On se réjouit de te voir · Famille Dutli"
+      footer:"On se réjouit de te voir · Famille Dutli", closing_caption:"À bientôt — ton Liam !"
     },
     it: {
       title:"Liam compie 1 anno! — 29 agosto 2026", htmllang:"it-CH",
@@ -383,7 +389,7 @@
       f_deadline:"Rispondere entro il 22 agosto 2026",
       f_error:"Qualcosa non ha funzionato. Riprova o contattaci direttamente.",
       thanks_title:"Grazie!", thanks_body:"La tua iscrizione è arrivata. Ci vediamo il 29 agosto!",
-      footer:"Non vediamo l’ora di vederti · Famiglia Dutli"
+      footer:"Non vediamo l’ora di vederti · Famiglia Dutli", closing_caption:"A presto — il tuo Liam!"
     },
     en: {
       title:"Liam turns 1! — 29 August 2026", htmllang:"en",
@@ -405,7 +411,7 @@
       f_deadline:"Please reply by 22 August 2026",
       f_error:"That didn’t work. Please try again or contact us directly.",
       thanks_title:"Thank you!", thanks_body:"We’ve received your RSVP. See you on 29 August!",
-      footer:"We can’t wait to see you · The Dutli family"
+      footer:"We can’t wait to see you · The Dutli family", closing_caption:"See you soon — your Liam!"
     }
   };
 
